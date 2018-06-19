@@ -4,7 +4,7 @@ from nltk.corpus import stopwords
 #from nltk.stem import WordNetLemmatizer 
 from collections import Counter
 import string
-import pickle
+import json
 #watchdog with IDLE
 class clientbase:
     
@@ -39,11 +39,11 @@ class clientbase:
     def dictupdat(self,fdic):
         """THis function adds dictionaries from different files """
         
-        #w=csv.writer(open("send_"+self.cname+"_"+self.ip+".csv","w"))  
-        w=open("send_"+self.cname+"_"+self.ip+".pkl","wb")
+        w=open("send_"+self.cname+"_"+self.ip+".json","w")
         self.senddict=Counter(self.senddict)+Counter(fdic)
-        #w.writerow([key,val] for key,val in self.senddict.items())
-        pickle.dump(self.senddict,w)
+        self.senddict=dict(self.senddict)
+        js=json.dumps(self.senddict)
+        w.write(js)
         w.close()
         #sw.close()
         #return  self.senddict
@@ -62,8 +62,8 @@ if __name__=="__main__":
     x.word_freq("2.txt")
     x1=x.getsenddict()
     print(len(x1))
-    x.word_freq("3.txt")
-    x1=x.getsenddict()
+    #x.word_freq("3.txt")
+    #x1=x.getsenddict()
     print(len(x1))
     x.word_freq("4.txt")
     x1=x.getsenddict()
@@ -76,6 +76,7 @@ if __name__=="__main__":
     print(len(x1))
     x.word_freq("7.txt")
     x1=x.getsenddict()
+    x1=dict(x1)
     print(len(x1))
     #a=x.dictupdat({'a':3})
     #a=x.dictupdat({'a':2,'b':3})
