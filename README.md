@@ -1,6 +1,7 @@
 Setting up:
 Install mongodb: 1.MongoDB  https://docs.mongodb.com/v3.2/installation/
                  2. MongoDB Atlas which provides GUI to interact with your DB : https://www.mongodb.com/products/compass
+
 Sample Text files: So for the testing part I've put text files in different Folders , and in the server DB I've used Folder names as 
                   a "Client"
                   The text files are numbered 1-7
